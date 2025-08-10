@@ -38,7 +38,7 @@ export default function ProductsTable() {
           <svg
             className="w-[30px] h-[30px] cursor-pointer"
             onClick={() => {
-              navigate(`/dashboard/users/${product.id}`);
+              navigate(`/dashboard/products/${product.id}`);
             }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"

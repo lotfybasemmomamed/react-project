@@ -50,3 +50,18 @@ export const addNewProduct = (productData) =>
   axios.post(`${baseUrl}product/create`, productData, configauth);
 export const deleteProduct = (id) =>
   axios.delete(`http://127.0.0.1:8000/api/product/delete/${id}`, configauth);
+
+export const updateProduct = async (id, productData) =>
+  await axios.post(`${baseUrl}product/update/${id}`, productData,configauth);
+
+export const showProductById = (id) =>
+  fetch(`${baseUrl}product/showbyid/${id}`,configauth)
+    .then((res) => res.json())
+    .then((data) => {
+      const productData = {
+        title: data[0]?.name,
+        description: data[0]?.email,
+        image: data[0].image,
+      };
+      return productData;
+    });

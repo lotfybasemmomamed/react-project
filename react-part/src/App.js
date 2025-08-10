@@ -12,6 +12,7 @@ import AddNewProduct from "./pages/dashbord/products/AddNewProduct";
 import { useLocation } from "react-router-dom";
 import RequiredAuth from "./pages/website/Auth/RequiredAuth";
 import PersistLogin from "./pages/website/Auth/PersistLogin";
+import UpdateProduct from './pages/dashbord/products/UpdateProduct'
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
               {/* products */}
               <Route path="products" element={<ProductsTable />} />
               <Route path="products/create" element={<AddNewProduct />} />
+              <Route path="products/:id" element={<UpdateProduct />} />
             </Route>
           </Route>
         </Route>
