@@ -1,24 +1,23 @@
 import axios from "axios";
 import { useUserContext } from "../context/UserContext";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 const baseUrl = "http://127.0.0.1:8000/api/";
-// const token = localStorage.getItem("token");
- const cookie = new Cookies();
+const cookie = new Cookies();
 const configauth = {
   headers: {
-    Accept: "application/json",
-    Authorization: `Bearer ${cookie.get('Bearer')}`,
+    // Accept: "application/json",
+    Authorization: `Bearer ${cookie.get("Bearer")}`,
   },
 };
 
 //Authentication
 export const register = (userData) =>
   axios.post(`${baseUrl}register`, userData);
-// .then((res) => res.json())
 
 export const login = (userData) => axios.post(`${baseUrl}login`, userData);
-export const logOut =async () => await axios.post(`${baseUrl}logout`, null,configauth);
+export const logOut = async () =>
+  await axios.post(`${baseUrl}logout`, null, configauth);
 
 //users
 export const showUserById = (id) =>
@@ -31,21 +30,23 @@ export const showUserById = (id) =>
         password: "",
         repeatpassword: "",
       };
-      cookie.set("Bearer", data.data.data.token)
+      cookie.set("Bearer", data.data.data.token);
       return userData;
     });
 
 export const updateUser = async (id, userData) =>
   await axios.post(`${baseUrl}user/update/${id}`, userData);
 
-export const showUsers = () =>
-  axios.get(`${baseUrl}user/show`, configauth)
+export const showUsers = () => axios.get(`${baseUrl}user/show`, configauth);
 export const deleteUser = (id) =>
   axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`, configauth);
 
 export const addNewUser = (userData) =>
   axios.post(`${baseUrl}user/create`, userData, configauth);
 
-
-
-
+//products
+export const showProducts = () => axios.get(`${baseUrl}product/show`, configauth);
+export const addNewProduct = (productData) =>
+  axios.post(`${baseUrl}product/create`, productData, configauth);
+export const deleteProduct = (id) =>
+  axios.delete(`http://127.0.0.1:8000/api/product/delete/${id}`, configauth);

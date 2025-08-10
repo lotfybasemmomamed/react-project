@@ -12,6 +12,11 @@ function SideBar() {
           Users
         </p>
       </Link>
+      <Link to={"/dashboard/Products"}>
+        <p className="bg-green-300 w-[90%] m-auto text-center rounded-[10px] py-2 mb-5 cursor-pointer hover:bg-green-200">
+          Products
+        </p>
+      </Link>
     </div>
   );
 }
